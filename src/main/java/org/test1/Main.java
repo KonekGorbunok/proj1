@@ -40,18 +40,16 @@ public class Main {
             //если скобка открывающая, то всегда добавляем её в список скобок
             if(openerSequence.contains(String.valueOf(ch))){
                 expr.add(String.valueOf(ch));
-            //если скобка закрывающая,то проверяем, сответствует ли ей последняя добавленная и удаляем элемент списка
+                //если скобка закрывающая,то проверяем, сответствует ли ей последняя добавленная и удаляем элемент списка
             } else if (closingSequence.contains(String.valueOf(ch))){
                 try {
                     Character c = expr.getLast().charAt(0);
-                    //на этом этапе я понял, что было бы классно немного переделать код и использовать двунапраленную Map
-                    //Гугл подсказал, что такое действительно есть, но только в других сторонних библиотеках
                     int openerIndex = openerSequence.indexOf(expr.getLast());
                     int closingIndex = closingSequence.indexOf(String.valueOf(ch));
                     //если последнюю добавленную скобку можно удалить, то удаляем
                     if (openerIndex == closingIndex){
                         expr.removeLast();
-                    //иначе это не правильная последовательность
+                        //иначе это не правильная последовательность
                     } else {
                         return false;
                     }
